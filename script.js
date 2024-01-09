@@ -24,8 +24,7 @@ function onReady() {
 onReady()
 
 function attack(e) {
-    const attackType = e.target.className;
-    // alert(attackType); --lists both class names
+    const attackType = e.target.className.split(" ")[1];
     // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
     //  --check button attack class to determine the above information
     // HP and AP cannot go negative, set to zero
