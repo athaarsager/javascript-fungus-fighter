@@ -66,7 +66,7 @@ function attack(e) {
 // If the Freaky Fungus runs out of HP, the monster is dead and you win! 
 // Replace the walk class with a dead class on the freaky-fungus element, to make them fall over and die.
 // If you run out of AP, the monster wins and humanity is doomed 😢 
-//Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
+// Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
 // You may no longer attack, if AP is 0. Give all of the attack buttons a disabled attribute, so they may no longer be used.
 
 function render() {
@@ -75,6 +75,8 @@ function render() {
     const apMeter = document.getElementById("ap-meter");
     apMeter.value = `${heroAP}`;
 
-    const hpText = document.getElementById("hp-text");
+    const hpText = document.getElementsByClassName("hp-text")[0];
+    hpText.textContent = `${fungusHP} HP`;
     const hpMeter = document.getElementById("hp-meter");
+    hpMeter.value = `${fungusHP}`;
 }
