@@ -8,8 +8,10 @@ function onReady() {
     
     // Make sure you check the index.html file! 
     // There are lots of buttons and things ready for you to hook into here!
-    const arcaneScepter = document.getElementsByClassName("arcane-scepter");
-    arcaneScepter[0].addEventListener("click", attack);
+    const attackButtons = document.getElementsByClassName("attack-btn");
+    for (let button of attackButtons) {
+        button.addEventListener("click", attack);
+    }
     
     
     // 🧠 Remember
@@ -22,8 +24,8 @@ function onReady() {
 onReady()
 
 function attack(e) {
-    const attackType = e.target.class;
-    alert(attackType);
+    const attackType = e.target.className;
+    // alert(attackType); --lists both class names
     // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
     //  --check button attack class to determine the above information
     // HP and AP cannot go negative, set to zero
