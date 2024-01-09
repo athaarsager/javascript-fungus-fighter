@@ -28,7 +28,8 @@ function attack(e) {
     const attackType = e.target.className.split(" ")[1];
     // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
     //  --check button attack class to determine the above information
-    if (heroAP <= 0) {
+    //need to change below if statement based on rendering instructions
+    if (heroAP === 0) {
         alert("Out of AP. We're DOOOOOOOOOOOOOOOOOOOOOOOOOOOMED!");
         return;
     }
@@ -51,6 +52,14 @@ function attack(e) {
             fungusHP -= 25;
             break;
     }
+
+    if (heroAP <= 0) {
+        heroAP = 0;
+    }
+    if (fungusHP <= 0) {
+        fungusHP = 0;
+    }
+
     console.log(`Hero AP: ${heroAP}, fungus HP: ${fungusHP}`);
     // HP and AP cannot go negative, set to zero
 }
