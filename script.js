@@ -34,11 +34,6 @@ function attack(e) {
     switch (attackType) {
         case "arcane-scepter":
             heroAP -= 12;
-            // if (heroAP < 0) {
-            //     heroAP += 12;
-            //     alert("Not enough AP!");
-            //     return;
-            // } Probably replace with button disable feature.--use html data
             fungusHP -= 14;
             break;
         case "entangle":
@@ -69,6 +64,7 @@ function attack(e) {
 
         renderAttack();
     }
+    checkRemainingAP();
 }
 
 // Render state changes to the DOM
@@ -103,3 +99,12 @@ function renderGameOver() {
     enemy.classList.replace("walk", "jump");
 }
 
+function checkRemainingAP() {
+    const attackButtons = document.getElementsByClassName("attack-btn");
+    for (let button of attackButtons) {
+        const apCost = button.dataset.apCost;
+        if (heroAP < apCost) {
+            button.disabled = true;
+        }
+    }
+}
