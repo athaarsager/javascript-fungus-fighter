@@ -1,6 +1,4 @@
-// State Variables can be declared outside of the onReady
-// Feel free to make this to what you want!
-// Example:
+
 let fungusHP = 100;
 let heroAP = 100;
 
@@ -14,11 +12,6 @@ function onReady() {
         button.addEventListener("click", attack);
     }
 
-
-    // 🧠 Remember
-    // - Handle events that ->
-    // - Updates state which is ->
-    // - Rendered to the DOM
 }
 
 onReady()
@@ -62,16 +55,6 @@ function attack(e) {
 
     checkRemainingAP();
 }
-
-// Render state changes to the DOM
-
-// Update the text above the attack buttons (eg, "100 AP")
-// Update the text above the enemy fungus (eg, "100 HP")
-// If the Freaky Fungus runs out of HP, the monster is dead and you win! 
-// Replace the walk class with a dead class on the freaky-fungus element, to make them fall over and die.
-// If you run out of AP, the monster wins and humanity is doomed 😢 
-// Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
-// You may no longer attack, if AP is 0. Give all of the attack buttons a disabled attribute, so they may no longer be used.
 
 function renderAttack() {
     const apText = document.querySelector(".ap-text");
