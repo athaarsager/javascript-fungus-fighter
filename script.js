@@ -52,11 +52,16 @@ function attack(e) {
 
     if (heroAP <= 0) {
         heroAP = 0;
-    }
-    if (fungusHP <= 0) {
+
+    } else if (fungusHP <= 0) {
         fungusHP = 0;
+        renderAttack();
+        renderWin();
+
+    } else {
+
+        renderAttack();
     }
-    render();
 }
 
 // Render state changes to the DOM
@@ -69,14 +74,20 @@ function attack(e) {
 // Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
 // You may no longer attack, if AP is 0. Give all of the attack buttons a disabled attribute, so they may no longer be used.
 
-function render() {
-    const apText = document.getElementsByClassName("ap-text")[0];
+function renderAttack() {
+    const apText = document.querySelector(".ap-text");
     apText.textContent = `${heroAP} AP`;
     const apMeter = document.getElementById("ap-meter");
     apMeter.value = `${heroAP}`;
 
-    const hpText = document.getElementsByClassName("hp-text")[0];
+    const hpText = document.querySelector(".hp-text");
     hpText.textContent = `${fungusHP} HP`;
     const hpMeter = document.getElementById("hp-meter");
     hpMeter.value = `${fungusHP}`;
 }
+
+function renderWin() {
+    const enemy = document.querySelector(".freaky-fungus");
+    enemy.classList.replace("walk", "dead");
+}
+
