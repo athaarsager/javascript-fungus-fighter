@@ -34,6 +34,11 @@ function attack(e) {
     switch (attackType) {
         case "arcane-scepter":
             heroAP -= 12;
+            // if (heroAP < 0) {
+            //     heroAP += 12;
+            //     alert("Not enough AP!");
+            //     return;
+            // } Probably replace with button disable feature.--use html data
             fungusHP -= 14;
             break;
         case "entangle":
@@ -52,6 +57,8 @@ function attack(e) {
 
     if (heroAP <= 0) {
         heroAP = 0;
+        renderAttack();
+        renderGameOver();
 
     } else if (fungusHP <= 0) {
         fungusHP = 0;
@@ -89,5 +96,10 @@ function renderAttack() {
 function renderWin() {
     const enemy = document.querySelector(".freaky-fungus");
     enemy.classList.replace("walk", "dead");
+}
+
+function renderGameOver() {
+    const enemy = document.querySelector(".freaky-fungus");
+    enemy.classList.replace("walk", "jump");
 }
 
