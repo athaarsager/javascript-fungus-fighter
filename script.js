@@ -18,7 +18,7 @@ onReady()
 
 function attack(e) {
     const attackType = e.target.className.split(" ")[1];
-    
+
     // display the changes in HP and AP on the DOM
     switch (attackType) {
         case "arcane-scepter":
@@ -49,6 +49,9 @@ function attack(e) {
         renderAttack();
         renderWin();
         return;
+    } else if (fungusHP < 50) {
+        renderAttack();
+        setInterval(regenerateHP, 1000);
     } else {
         renderAttack();
     }
@@ -91,4 +94,20 @@ function checkRemainingAP() {
     if (disabledCount === 4) {
         renderGameOver();
     }
+}
+
+function regenerateHP() {
+    // if (fungusHP >= 50) {
+    //     return;
+    // }
+    // use above conditional to stop HP regeneration once back to 50.
+    // current function does not stop incrementing until fungus back to full health
+    if (fungusHP === 100) {
+        return;
+    }
+    const hpText = document.querySelector(".hp-text");
+    hpText.textContent = `${fungusHP + 1} HP`;
+    const hpMeter = document.getElementById("hp-meter");
+    hpMeter.value = `${fungusHP + 1}`;
+    fungusHP++;
 }
