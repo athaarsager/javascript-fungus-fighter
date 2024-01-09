@@ -25,11 +25,7 @@ onReady()
 
 function attack(e) {
     const attackType = e.target.className.split(" ")[1];
-    //need to change below if statement based on rendering instructions
-    if (heroAP === 0) {
-        alert("Out of AP. We're DOOOOOOOOOOOOOOOOOOOOOOOOOOOMED!");
-        return;
-    }
+    
     // display the changes in HP and AP on the DOM
     switch (attackType) {
         case "arcane-scepter":
@@ -54,16 +50,16 @@ function attack(e) {
         heroAP = 0;
         renderAttack();
         renderGameOver();
-
+        return;
     } else if (fungusHP <= 0) {
         fungusHP = 0;
         renderAttack();
         renderWin();
-
+        return;
     } else {
-
         renderAttack();
     }
+
     checkRemainingAP();
 }
 
@@ -101,10 +97,15 @@ function renderGameOver() {
 
 function checkRemainingAP() {
     const attackButtons = document.getElementsByClassName("attack-btn");
+    let disabledCount = 0;
     for (let button of attackButtons) {
         const apCost = button.dataset.apCost;
         if (heroAP < apCost) {
             button.disabled = true;
+            disabledCount++;
         }
+    }
+    if (disabledCount === 4) {
+        renderGameOver();
     }
 }
