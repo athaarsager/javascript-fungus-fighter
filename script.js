@@ -18,3 +18,10 @@ function onReady() {
 
 
 onReady()
+
+function attack(e) {
+    // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
+    //  --check button attack class to determine the above information
+    // HP and AP cannot go negative, set to zero
+
+}
