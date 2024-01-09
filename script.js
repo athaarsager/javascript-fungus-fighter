@@ -21,13 +21,10 @@ function onReady() {
     // - Rendered to the DOM
 }
 
-
 onReady()
 
 function attack(e) {
     const attackType = e.target.className.split(" ")[1];
-    // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
-    //  --check button attack class to determine the above information
     //need to change below if statement based on rendering instructions
     if (heroAP === 0) {
         alert("Out of AP. We're DOOOOOOOOOOOOOOOOOOOOOOOOOOOMED!");
@@ -59,7 +56,25 @@ function attack(e) {
     if (fungusHP <= 0) {
         fungusHP = 0;
     }
+    render();
+}
 
-    console.log(`Hero AP: ${heroAP}, fungus HP: ${fungusHP}`);
-    // HP and AP cannot go negative, set to zero
+// Render state changes to the DOM
+
+// Update the text above the attack buttons (eg, "100 AP")
+// Update the text above the enemy fungus (eg, "100 HP")
+// If the Freaky Fungus runs out of HP, the monster is dead and you win! 
+// Replace the walk class with a dead class on the freaky-fungus element, to make them fall over and die.
+// If you run out of AP, the monster wins and humanity is doomed 😢 
+//Replace the walk class with a jump class on the freaky-fungus element, to make them jump for the glory of the fungal race.
+// You may no longer attack, if AP is 0. Give all of the attack buttons a disabled attribute, so they may no longer be used.
+
+function render() {
+    const apText = document.getElementsByClassName("ap-text")[0];
+    apText.textContent = `${heroAP} AP`;
+    const apMeter = document.getElementById("ap-meter");
+    apMeter.value = `${heroAP}`;
+
+    const hpText = document.getElementById("hp-text");
+    const hpMeter = document.getElementById("hp-meter");
 }
