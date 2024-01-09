@@ -28,7 +28,10 @@ function attack(e) {
     const attackType = e.target.className.split(" ")[1];
     // make Freaky Fungus lose HP, reduce your AP based on given stats in README.md
     //  --check button attack class to determine the above information
-
+    if (heroAP <= 0) {
+        alert("Out of AP. We're DOOOOOOOOOOOOOOOOOOOOOOOOOOOMED!");
+        return;
+    }
     // display the changes in HP and AP on the DOM
     switch (attackType) {
         case "arcane-scepter":
